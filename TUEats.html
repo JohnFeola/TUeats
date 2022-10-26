@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<html lang = "en">
+    <meta charset="utf-8">
+
+
+<head>
+<title>TUEats</title>
+
+<script type="text/javascript">
+    function checkpassword(form){
+        password1 = (document.forms["validate"]["passwordy"].value)
+        password2 = (document.forms["validate"]["verifypasswordy"].value);
+
+        if(password1 != password2){
+            alert("ensure passwords match");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    //was trying to make the referall code text  turn red if user entered invalid code ...
+
+// let referrallCode2 = (document.forms["validate"]["referrall code"]);
+// let referrallCode = document.getElementById("referrall code");
+
+// referrallCode.addEventListener('input', validateRefCode);
+
+// function validateRefCode(form){
+//     if(referrallCode.value == "tucis" || referrallCode.value == "bogo" || referrallCode.value == "eatgood"){
+//         referrallCode.style.color = 'red';
+//     }else{
+//         referrallCode.style.color = 'green';
+//     }
+// }
+
+
+//called using onkeyup so it checks while it is being entered
+    function checkreferallcode(form){
+        refcode = (document.forms["validate"]["referrall code"].value);
+
+        if(refcode == "tucis" || refcode == "bogo" || refcode == "eatgood"){
+            alert("referral code is invalid")
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function checkusernamelength(form){
+        username = (document.forms["validate"]["username"].value);
+
+        if(username.length < 6){
+            alert("username must be at least 6 characters");
+            return false;
+        }else if(username.length >= 24){
+            alert("username must be less than 24 characters long");
+            return false;
+        }else{
+            return true;
+        }
+    }
+    function mailist(){
+        let x = true;
+        localStorage.setItem("textvalue101", "subscribed to mailing list");
+    }
+
+    function sendinfo(){
+        var firstname = document.getElementById("username1").value;
+        // var username101 = document.getElementById("username101").value;
+        var password = document.getElementById("passwordy1").value;
+        if(refcodey != ""){
+            var refcodey = document.getElementById("referrallcode1").value;
+        }
+        var maillist = document.getElementById("mailinglist1").checked;
+        var emaily = document.getElementById("email1").value;
+        var username2 = document.getElementById("username1").value;
+        var password2 = document.getElementById("verify1").value;
+        localStorage.setItem("textvalue1", ("Hello " + firstname));
+        // localStorage.setItem("textvalue99", ("- username: " + username101))
+        localStorage.setItem("textvalue2", ("- password: " +password));
+        localStorage.setItem("username:", ("- username: " + username2));
+        localStorage.setItem("verifyvalue", (" - verify password: " + password2));
+        if(refcodey == ""){
+            localStorage.setItem("textvalue3", "");
+        }else{
+        localStorage.setItem("textvalue3", ("- referrall code: " + refcodey));
+        }
+        localStorage.setItem("textvalue4", ("- checkbox: " +maillist));
+        localStorage.setItem("textvalue5", ("- email:" +  emaily));
+        return false;
+    }
+
+
+    //leave alone below !!!!......
+    // function usname(){
+    //     username2 = forms.username.value;
+
+    //     if(username2.length < 6){
+    //         alert("username must be 6 or more characters");
+    //         return false;
+    //     }else{
+    //         return true;
+    //     }
+    // }
+</script>
+<link rel = "stylesheet" type="text/css" href="tueats.css">
+<h1 class="welcome2">Welcome to TU Eats</h1>
+</head>
+
+
+
+<body>
+<form id="validate" method="GET"  onsubmit="return !!(checkpassword() & checkreferallcode() & checkusernamelength());" action= tueats_completed.html>
+    <fieldset>
+        <legend>Sign-up</legend>
+    
+    
+    <!-- <p>Fill out the following form to sign up for TUEats</p> -->
+
+    <label name="Username">Username</label>
+    <input type="text" placeholder="your username" name="username" id="username1" required>
+
+    <br>
+    <br>
+
+    <label name="Your Email">Email</label>
+    <input type="text" placeholder="email address" name="email" id="email1" required>
+
+    <br>
+    <br>
+
+    <label name="Referral code">Referral Code</label>
+    <input type="text" placeholder="referral code" name="referrall code" id="referrallcode1" onkeyup="checkreferallcode();">
+
+    <br>
+    <br>
+
+    <label name="Password">Password</label>
+    <input type="password" placeholder="password" name="passwordy" id="passwordy1" required>
+
+    <br>
+    <br>
+
+    <label name="Verify Password">Verify your Password</label>
+    <input type="password" placeholder="Verify password" name="verifypasswordy" id="verify1" required>
+
+    <br>
+    <br>
+
+    <label name="Mailing List">Sign up for our newsletter?</label>
+    <input type="checkbox" name="mailing List" id="mailinglist1" onclick="return maillist();">
+
+    <br>
+    <br>
+
+    <label name="Submit">Submit</label>
+    <input type="submit" name="submit" onclick="sendinfo();">
+    </fieldset>
+</form>
+
+<table class="table1">
+    <caption>Menu is subject to change, please visit our
+        <a href="https://Towson.edu" class="linky">main site</a> for more information</caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Calories</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Item 1</td>
+            <td>Burger</td>
+            <td>$8</td>
+            <td>550</td>
+        </tr>
+
+        <tr>
+            <td>Item 2</td>
+            <td>Mozarella Sticks</td>
+            <td>$7</td>
+            <td rowspan="2">400</td>
+        </tr>
+
+        <tr>
+            <td>Item 3</td>
+            <td>Fries</td>
+            <td>$4</td>
+            <!-- <th>400</th> -->
+        </tr>
+    </tbody>
+</table>
+
+<!-- <label name="Submit">Submit</label>
+<input type="submit" a href='tueats_completed.html'> -->
+
+<br>
+
+<img class="img-towsonlogo" src="towsonlogo.jpg" alt="towson-university-logo">
+
+</body>
+
+</html>

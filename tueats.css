@@ -1,0 +1,41 @@
+body{
+    background-color:white;
+}
+
+table{
+    width: 75%;
+    border-width: 1px;
+    border-color: black;
+    border-collapse: collapse;
+    border-style: solid;
+    text-align: center;
+    font-weight: normal;
+}
+
+th{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    background-color: #808080;
+    font-weight: bold;
+}
+td{
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    background-color: gray;
+
+}
+
+.img-towsonlogo{
+    width: 25%;
+    /* source : http://everything-pr.com/wp-content/uploads/2018/02/Towson-University-750x400.jpg */
+}
+.welcome2{
+    color: rgb(255, 187, 0);
+}
+
+.linky:hover{
+    color:rgb(255, 187, 0);
+}
+
